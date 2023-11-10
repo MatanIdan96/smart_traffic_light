@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<style>
+			img {
+				display: none;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			h1 {
+				text-align: center;
+			}
+
+			.inputs {
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+			}
+
+			#enter-btn {
+				width: fit-content;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Hi matan</h1>
+		<div class="inputs">
+			<label>
+				username:
+				<input type="text" id="username" />
+			</label>
+			<label>
+				password:
+				<input type="text" id="password" />
+			</label>
+			<button id="enter-btn">Enter</button>
+		</div>
+		<img id="bg" src="{{ url_for('video_feed') }}" style="width: 88%" />
+		<script src="script.js"></script>
+	</body>
+</html>
