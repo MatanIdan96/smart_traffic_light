@@ -1,18 +1,36 @@
-import keys from '../keys.json';
+import keys from './keys.json';
+
+console.log('hi');
+console.log(keys);
 
 const image = document.getElementById('bg');
+const enterBtn = document.getElementById('enter-btn');
 const passwordInput = document.getElementById('password');
 const usernameInput = document.getElementById('username');
-const enterBtn = document.getElementById('enter-btn');
 
-const checkIfUserCanEnter = (username, password, keys) => {
-	console.log(username);
-	console.log(password);
-	console.log(keys);
+console.log(image);
+
+const showVideo = () => {
+	console.log('Button clicked');
+	image.style.display = 'block';
 };
 
-const testFunc = () => {
-	console.log('test');
+const checkIfUserCanEnter = () => {
+	const enteredUsername = usernameInput.value;
+	const enteredPassword = passwordInput.value;
+
+	// Check if entered credentials match any keys from keys.json
+	const isValidUser = some(
+		(key) =>
+			key.username === enteredUsername && key.password === enteredPassword
+	);
+
+	if (isValidUser) {
+		console.log('Login successful');
+		showVideo();
+	} else {
+		console.log('Invalid credentials');
+	}
 };
 
-enterBtn.addEventListener('click', testFunc);
+enterBtn.addEventListener('click', checkIfUserCanEnter);
