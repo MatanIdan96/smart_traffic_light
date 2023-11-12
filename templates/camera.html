@@ -31,11 +31,82 @@
 			</label>
 			<label>
 				password:
-				<input type="text" id="password" />
+				<input type="password" id="password" />
 			</label>
 			<button id="enter-btn">Enter</button>
 		</div>
 		<img id="bg" src="{{ url_for('video_feed') }}" style="width: 88%" />
-		<script src="script.js"></script>
+		<script type="module">
+			const image = document.getElementById('bg');
+			const enterBtn = document.getElementById('enter-btn');
+			const passwordInput = document.getElementById('password');
+			const usernameInput = document.getElementById('username');
+			const showVideo = () => {
+				console.log('Button clicked');
+				image.style.display = 'block';
+			};
+
+			const testClick = () => {
+				console.log('click');
+			};
+
+			const checkIfUserCanEnter = async () => {
+				// Fetch the keys.json file
+				const response = await fetch('keys.json');
+				const keys = await response.json();
+
+				const enteredUsername = usernameInput.value;
+				const enteredPassword = passwordInput.value;
+
+				// Check if entered credentials match any keys from keys.json
+				const isValidUser = keys.some(
+					(key) =>
+						key.username === enteredUsername && key.password === enteredPassword
+				);
+
+				if (isValidUser) {
+					console.log('Login successful');
+					showVideo();
+				} else {
+					console.log('Invalid credentials');
+				}
+			};
+
+			const handleShowStream = async () => {
+				const data = {
+					username: usernameInput.value,
+					password: passwordInput.value,
+				};
+
+				try {
+					const response = await fetch('/check_if_valid', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify(data),
+					});
+
+					const result = await response.json();
+					const { isTrue } = result;
+
+					if (isTrue) {
+						const url = 'video_feed';
+						window.location.href = url;
+					} else {
+						alert('wrong info');
+					}
+
+					console.log(result);
+				} catch (error) {
+					console.error('Error:', error);
+					// Handle errors such as network issues or invalid JSON response
+				}
+			};
+
+			// enterBtn.addEventListener('click', checkIfUserCanEnter);
+
+			enterBtn.addEventListener('click', handleShowStream);
+		</script>
 	</body>
 </html>
