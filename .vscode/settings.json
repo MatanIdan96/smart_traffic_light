@@ -1,4 +1,4 @@
 {
-    "python.defaultInterpreterPath": "/home/matan/pivenv/bin/python",
-    "liveServer.settings.port": 5501
+  "python.defaultInterpreterPath": "${workspaceFolder}/pivenv/bin/python",
+  "liveServer.settings.port": 5501
 }
