@@ -1,4 +1,4 @@
-#!/home/matan/pivenv/bin/python3.11
+#!/home/matan/smart_traffic_light/pivenv/bin/python3.11
 # -*- coding: utf-8 -*-
 import re
 import sys
