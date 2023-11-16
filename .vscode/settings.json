@@ -1,4 +1,6 @@
 {
-  "python.defaultInterpreterPath": "${workspaceFolder}/pivenv/bin/python",
-  "liveServer.settings.port": 5501
+  "python.pythonPath": "${workspaceFolder}/pivenv/bin/python",
+  "python.venvPath": "${workspaceFolder}/pivenv",
+  "python.linting.pylintEnabled": true,
+  "python.linting.flake8Enabled": true
 }
