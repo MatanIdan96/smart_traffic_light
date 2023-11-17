@@ -11,7 +11,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "python": "/home/matan/pivenv/bin/python"
+            "python": "./pivenv/bin/python"
         }
     ]
 }
